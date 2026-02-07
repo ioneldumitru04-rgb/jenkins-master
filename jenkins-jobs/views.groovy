@@ -1,4 +1,4 @@
-listView('PRODUCTION') {
+listView('Production') {
     description('PRODUCTION VIEW')
     jobs {
         regex('PROD_.*')
@@ -12,4 +12,19 @@ listView('PRODUCTION') {
         lastDuration()
         buildButton()
     }
+}
+listView('Verification') {
+    description('Verification')
+    jobs {
+        regex('VER_.*')
+    }
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+    }    
 }
