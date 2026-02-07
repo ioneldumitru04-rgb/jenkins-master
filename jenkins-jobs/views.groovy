@@ -17,7 +17,7 @@ listView('Verification') {
     description('Verification')
     jobs {
         regex('VER_.*')
-    }
+    } 
     columns {
         status()
         weather()
