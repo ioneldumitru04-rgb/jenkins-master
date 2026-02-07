@@ -1,5 +1,5 @@
-listview("PRODUCTION") {
-    description("PRODUCTION VIEEW")
+listview('PRODUCTION') {
+    description('PRODUCTION VIEW')
     jobs {
         regex('PROD_.*')
     }
