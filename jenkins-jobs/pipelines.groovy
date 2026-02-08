@@ -53,7 +53,7 @@ branches.each { branchName ->
                             url(gitUrl)
                             credentials(credentialsId)
                         }
-                        branches(branchName)
+                        branch(branchName)
                     }
                 }
                 scriptPath('Jenkinsfile')
