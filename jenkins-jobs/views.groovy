@@ -43,3 +43,18 @@ listView('Snapshot') {
         buildButton()
     }    
 }
+listView('TOOLS') {
+    description('TOOLS USED IN CI')
+    jobs {
+        regex('TOOL_.*')
+    } 
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+    }    
+}
