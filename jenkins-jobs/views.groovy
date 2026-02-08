@@ -28,3 +28,18 @@ listView('Verification') {
         buildButton()
     }    
 }
+listView('Snapshot') {
+    description('Snapshot validation')
+    jobs {
+        regex('SNAPSHOT_.*')
+    } 
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+    }    
+}

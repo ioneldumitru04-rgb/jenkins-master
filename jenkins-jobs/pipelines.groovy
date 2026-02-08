@@ -38,7 +38,8 @@ branches.each { branchName ->
     def jobName = "VER_${branchName.replaceAll('/', '-')}_FRONTEND"
     
     pipelineJob(jobName) {
-        description("Build pentru branch: ${branchName}")
+        description("Verification: ${branchName}")
+        label("agent")
         
         parameters {
             stringParam('BRANCH', branchName, 'Branch to build')
@@ -62,11 +63,11 @@ branches.each { branchName ->
     }
 }
 branches.each { branchName ->
-    def jobName = "PROD_${branchName.replaceAll('/', '-')}_BACKEND"
+    def jobName = "SNAPSHOT_${branchName.replaceAll('/', '-')}"
     
     pipelineJob(jobName) {
-        description("Build pentru branch: ${branchName}")
-        
+        description("Snapshot: ${branchName}")
+        label("agent")
         parameters {
             stringParam('BRANCH', branchName, 'Branch to build')
             booleanParam('RUN_TESTS', true, 'Run tests')
