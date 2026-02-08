@@ -33,7 +33,7 @@ def branches = getRemoteBranches(gitUrl, credentialsId)
 
 println "Found branches: ${branches}"
 
-// Creează job pentru fiecare branch
+//VERIFICATION JOBS
 branches.each { branchName ->
     def jobName = "VER_${branchName.replaceAll('/', '-')}_FRONTEND"
     
@@ -43,6 +43,61 @@ branches.each { branchName ->
             stringParam('BRANCH', branchName, 'Branch to build')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
+        
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url(gitUrl)
+                            credentials(credentialsId)
+                        }
+                        branch(branchName)
+                    }
+                }
+                scriptPath('Jenkinsfile')
+            }
+        }
+    }
+}
+branches.each { branchName ->
+    def jobName = "VER_${branchName.replaceAll('/', '-')}_BACKEND"
+    
+    pipelineJob(jobName) {
+        description("Verification: ${branchName}")        
+        parameters {
+            stringParam('BRANCH', branchName, 'Branch to build')
+            booleanParam('RUN_TESTS', true, 'Run tests')
+        }
+        
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url(gitUrl)
+                            credentials(credentialsId)
+                        }
+                        branch(branchName)
+                    }
+                }
+                scriptPath('Jenkinsfile')
+            }
+        }
+    }
+}
+//PRODCUTION JOBS
+branches.each { branchName ->
+    def jobName = "PROD_${branchName.replaceAll('/', '-')}_FRONTEND"
+    
+    pipelineJob(jobName) {
+        description("Production: ${branchName}")
+        parameters {
+            stringParam('BRANCH', branchName, 'Branch to build')
+            booleanParam('RUN_TESTS', true, 'Run tests')
+        }
+        
+        // Trigger SCM polling
         
         definition {
             cpsScm {
@@ -88,6 +143,7 @@ branches.each { branchName ->
         }
     }
 }
+//VALIDATOR SNAPSHOT
 branches.each { branchName ->
     def jobName = "SNAPSHOT_${branchName.replaceAll('/', '-')}"
     
