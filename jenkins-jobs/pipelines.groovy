@@ -86,37 +86,10 @@ branches.each { branchName ->
         }
     }
 }
-//PRODCUTION JOBS
+//PRODUCTION JOBS
+
 branches.each { branchName ->
-    def jobName = "PROD_${branchName.replaceAll('/', '-')}_FRONTEND"
-    
-    pipelineJob(jobName) {
-        description("Production: ${branchName}")
-        parameters {
-            stringParam('BRANCH', branchName, 'Branch to build')
-            booleanParam('RUN_TESTS', true, 'Run tests')
-        }
-        
-        // Trigger SCM polling
-        
-        definition {
-            cpsScm {
-                scm {
-                    git {
-                        remote {
-                            url(gitUrl)
-                            credentials(credentialsId)
-                        }
-                        branch(branchName)
-                    }
-                }
-                scriptPath('Jenkinsfile')
-            }
-        }
-    }
-}
-branches.each { branchName ->
-    def jobName = "PROD_${branchName.replaceAll('/', '-')}_BACKEND"
+    def jobName = "PROD_${branchName.replaceAll('/', '-')}_CRM"
     
     pipelineJob(jobName) {
         description("Production: ${branchName}")
