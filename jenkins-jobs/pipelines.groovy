@@ -1,5 +1,3 @@
-import hudson.plugins.git.GitSCM
-import hudson.plugins.git.BranchSpec
 
 // Funcție pentru a lua branch-urile remote
 def getRemoteBranches(String gitUrl, String credentialsId) {
