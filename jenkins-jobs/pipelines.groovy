@@ -38,9 +38,7 @@ branches.each { branchName ->
     def jobName = "VER_${branchName.replaceAll('/', '-')}_FRONTEND"
     
     pipelineJob(jobName) {
-        description("Verification: ${branchName}")
-        label("agent")
-        
+        description("Verification: ${branchName}")        
         parameters {
             stringParam('BRANCH', branchName, 'Branch to build')
             booleanParam('RUN_TESTS', true, 'Run tests')
@@ -63,11 +61,38 @@ branches.each { branchName ->
     }
 }
 branches.each { branchName ->
+    def jobName = "PROD_${branchName.replaceAll('/', '-')}_BACKEND"
+    
+    pipelineJob(jobName) {
+        description("Production: ${branchName}")
+        parameters {
+            stringParam('BRANCH', branchName, 'Branch to build')
+            booleanParam('RUN_TESTS', true, 'Run tests')
+        }
+        
+        // Trigger SCM polling
+        
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url(gitUrl)
+                            credentials(credentialsId)
+                        }
+                        branch(branchName)
+                    }
+                }
+                scriptPath('Jenkinsfile')
+            }
+        }
+    }
+}
+branches.each { branchName ->
     def jobName = "SNAPSHOT_${branchName.replaceAll('/', '-')}"
     
     pipelineJob(jobName) {
-        description("Snapshot: ${branchName}")
-        label("agent")
+        description("SNAPSHOT: ${branchName}")
         parameters {
             stringParam('BRANCH', branchName, 'Branch to build')
             booleanParam('RUN_TESTS', true, 'Run tests')
