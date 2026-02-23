@@ -40,7 +40,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
         parameters {
-            stringParam('BRANCH', branchName, 'Branch to build')
+            stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
         
@@ -66,7 +66,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
         parameters {
-            stringParam('BRANCH', branchName, 'Branch to build')
+            stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
         
@@ -94,7 +94,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("Production: ${branchName}")
         parameters {
-            stringParam('BRANCH', branchName, 'Branch to build')
+            stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
         
@@ -123,7 +123,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("SNAPSHOT: ${branchName}")
         parameters {
-            stringParam('BRANCH', branchName, 'Branch to build')
+            stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
         
