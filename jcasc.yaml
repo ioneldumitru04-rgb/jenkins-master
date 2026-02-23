@@ -13,7 +13,7 @@ jenkins:
           - labelString: "docker-agent"
             name: "docker-agent"
             dockerTemplateBase:
-              image: "jenkins/inbound-agent:latest"
+              image: "packages-agent"
               tty: true
             remoteFs: "/home/jenkins/agent"
             instanceCapStr: "10"

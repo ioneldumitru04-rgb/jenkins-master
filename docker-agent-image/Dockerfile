@@ -10,11 +10,12 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir \
+RUN pip3 install --break-system-package --no-cache-dir \
     requests \
     boto3 \
     pyyaml \
-    jinja2
+    jinja2 \
+    pytest 
 
 USER jenkins 
 

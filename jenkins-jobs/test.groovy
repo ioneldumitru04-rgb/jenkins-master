@@ -2,7 +2,7 @@ job('my-simple-job') {
     description('Un job simplu creat cu DSL')
     label("agent")
     steps {
-        shell('echo "Hello"')
+        shell('echo "Hello  test2  "')
     }
 
 }
