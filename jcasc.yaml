@@ -28,8 +28,7 @@ jenkins:
 
 unclassified:
   location:
-    url: "http://localhost:8080/"
-
+    url: "https://exodermal-corrin-nonempirically.ngrok-free.dev" # change with ngrok or host's ip
 appearance:
   themeManager:
     disableUserThemes: true
