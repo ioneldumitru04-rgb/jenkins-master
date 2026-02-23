@@ -4,9 +4,9 @@ job('TOOL_Branchout') {
 
     parameters {
         stringParam('BRANCH', 'master', 'SCM branch to clone')
-        string('BRANCH_FROM', '', 'Branch from')
-        string('BRANCH_TO', '', 'Branch target, if doesnt exist create a new one')
-        string('BASE_REVISION', '', 'Revision to branchout, if empty, get head of the branch from')
+        stringParam('BRANCH_FROM', '', 'Branch from')
+        stringParam('BRANCH_TO', '', 'Branch target, if doesnt exist create a new one')
+        stringParam('BASE_REVISION', '', 'Revision to branchout, if empty, get head of the branch from')
     }
 
 
