@@ -43,7 +43,7 @@ listView('Snapshot') {
         buildButton()
     }    
 }
-listView('TOOLS') {
+listView('Tools') {
     description('TOOLS USED IN CI')
     jobs {
         regex('TOOL_.*')

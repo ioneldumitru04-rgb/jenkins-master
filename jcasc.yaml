@@ -1,0 +1,37 @@
+jenkins:
+  systemMessage: "JENKINS MASTER START"
+
+  numExecutors: 0
+
+  clouds:
+    - docker:
+        name: "docker"
+        dockerApi:
+          dockerHost:
+            uri: "unix:///var/run/docker.sock"
+        templates:
+          - labelString: "docker-agent"
+            name: "docker-agent"
+            dockerTemplateBase:
+              image: "jenkins/inbound-agent:latest"
+              tty: true
+            remoteFs: "/home/jenkins/agent"
+            instanceCapStr: "10"
+            retentionStrategy:
+              idleMinutes: 5
+
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "DOCKER_HOST"
+            value: "unix:///var/run/docker.sock"
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+
+appearance:
+  themeManager:
+    disableUserThemes: true
+    theme: "darkSystem"
+
