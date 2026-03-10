@@ -1,6 +1,6 @@
 
 // Funcție pentru a lua branch-urile remote
-def getRemoteBranches(String gitUrl, String credentialsId) {
+def getRemoteBranches(String gitUrl) {
     def branches = []
     
     try {
@@ -26,7 +26,7 @@ def getRemoteBranches(String gitUrl, String credentialsId) {
 //Oricare dintre branchuri deoarece tot flow este liniar per branch
 gitUrl = "https://github.com/ioneldumitru04-rgb/Snapshots"
 
-def branches = getRemoteBranches(gitUrl, credentialsId)
+def branches = getRemoteBranches(gitUrl)
 
 println "Found branches: ${branches}"
 
