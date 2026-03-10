@@ -1,7 +1,7 @@
-listView('Production') {
+listView('DELIVERY') {
     description('PRODUCTION VIEW')
     jobs {
-        regex('PROD_.*')
+        regex('DELIVERY.*')
     }
     columns {
         status()

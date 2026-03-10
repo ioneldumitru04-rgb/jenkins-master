@@ -35,7 +35,7 @@ println "Found branches: ${branches}"
 
 //VERIFICATION JOBS
 branches.each { branchName ->
-    def jobName = "VER_${branchName.replaceAll('/', '-')}_FRONTEND"
+    def jobName = "VERIFICATION_${branchName.replaceAll('/', '-')}_FRONTEND"
     
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
@@ -61,7 +61,7 @@ branches.each { branchName ->
     }
 }
 branches.each { branchName ->
-    def jobName = "VER_${branchName.replaceAll('/', '-')}_BACKEND"
+    def jobName = "VERIFICATION_${branchName.replaceAll('/', '-')}_BACKEND"
     
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
@@ -89,10 +89,10 @@ branches.each { branchName ->
 //PRODUCTION JOBS
 
 branches.each { branchName ->
-    def jobName = "PROD_${branchName.replaceAll('/', '-')}_CRM"
+    def jobName = "DELIVERY_${branchName.replaceAll('/', '-')}_CRM"
     
     pipelineJob(jobName) {
-        description("Production: ${branchName}")
+        description("DELIVERY: ${branchName}")
         parameters {
             stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
