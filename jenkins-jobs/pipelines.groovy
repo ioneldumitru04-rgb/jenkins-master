@@ -54,6 +54,9 @@ branches.each { branchName ->
                 scriptPath('Jenkinsfile')
             }
         }
+        triggers {
+            githubPush()
+        }
     }
 }
 branches.each { branchName ->
@@ -79,6 +82,9 @@ branches.each { branchName ->
                 }
                 scriptPath('Jenkinsfile')
             }
+        }
+        triggers {
+            githubPush()
         }
     }
 }
@@ -121,6 +127,9 @@ branches.each { branchName ->
                 }
                 scriptPath('Jenkinsfile')
             }
+        }
+        triggers {
+            githubPush()
         }
     }
 }
