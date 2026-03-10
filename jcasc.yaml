@@ -12,6 +12,7 @@ jenkins:
         templates:
           - labelString: "docker-agent"
             name: "docker-agent"
+            pullStrategy: "PULL_NEVER"
             dockerTemplateBase:
               image: "packages-agent"
               tty: true
