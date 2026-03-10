@@ -40,6 +40,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
         parameters {
+            stringParam('REPO', "https://github.com/ioneldumitru04-rgb/CRM-frontend", "SCM Repository")
             stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
@@ -49,7 +50,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(gitUrl)
+                            url(REPO)
                         }
                         branch(branchName)
                     }
@@ -65,6 +66,7 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("Verification: ${branchName}")        
         parameters {
+            stringParam('REPO', "https://github.com/ioneldumitru04-rgb/CRM-backend", "SCM Repository")
             stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
@@ -74,7 +76,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(gitUrl)
+                            url(REPO)
                         }
                         branch(branchName)
                     }
@@ -95,22 +97,6 @@ branches.each { branchName ->
             stringParam('BRANCH', branchName, 'SCM Branch to clone')
             booleanParam('RUN_TESTS', true, 'Run tests')
         }
-        
-        // Trigger SCM polling
-        
-        definition {
-            cpsScm {
-                scm {
-                    git {
-                        remote {
-                            url(gitUrl)
-                        }
-                        branch(branchName)
-                    }
-                }
-                scriptPath('Jenkinsfile')
-            }
-        }
     }
 }
 //VALIDATOR SNAPSHOT
@@ -120,8 +106,9 @@ branches.each { branchName ->
     pipelineJob(jobName) {
         description("SNAPSHOT: ${branchName}")
         parameters {
+            stringParam('REPO', "https://github.com/ioneldumitru04-rgb/Snapshots", "SCM Repository")
             stringParam('BRANCH', branchName, 'SCM Branch to clone')
-            booleanParam('RUN_TESTS', true, 'Run tests')
+            booleanParam('RUN_DELIVERY', true, 'Run delivery')
         }
         
         // Trigger SCM polling
@@ -131,7 +118,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(gitUrl)
+                            url(REPO)
                         }
                         branch(branchName)
                     }
