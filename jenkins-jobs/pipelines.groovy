@@ -23,6 +23,8 @@ def getRemoteBranches(String gitUrl, String credentialsId) {
     
     return branches
 }
+//Oricare dintre branchuri deoarece tot flow este liniar per branch
+gitUrl = "https://github.com/ioneldumitru04-rgb/Snapshots"
 
 def branches = getRemoteBranches(gitUrl, credentialsId)
 
