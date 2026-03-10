@@ -15,8 +15,10 @@ RUN pip3 install --break-system-package --no-cache-dir \
     boto3 \
     pyyaml \
     jinja2 \
-    pytest 
+    pytest \
+    flask_security
 
 USER jenkins 
 
 #sudo docker images jenkins-agent-pack:latest
+#docker build -t packages-agent .
