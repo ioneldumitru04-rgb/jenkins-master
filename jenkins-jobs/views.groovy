@@ -16,7 +16,7 @@ listView('DELIVERY') {
 listView('Verification') {
     description('Verification')
     jobs {
-        regex('VER_.*')
+        regex('VERIFICATION_.*')
     } 
     columns {
         status()
