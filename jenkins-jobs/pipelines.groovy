@@ -50,7 +50,6 @@ branches.each { branchName ->
                     git {
                         remote {
                             url(gitUrl)
-                            credentials(credentialsId)
                         }
                         branch(branchName)
                     }
@@ -76,7 +75,6 @@ branches.each { branchName ->
                     git {
                         remote {
                             url(gitUrl)
-                            credentials(credentialsId)
                         }
                         branch(branchName)
                     }
@@ -106,7 +104,6 @@ branches.each { branchName ->
                     git {
                         remote {
                             url(gitUrl)
-                            credentials(credentialsId)
                         }
                         branch(branchName)
                     }
@@ -135,7 +132,6 @@ branches.each { branchName ->
                     git {
                         remote {
                             url(gitUrl)
-                            credentials(credentialsId)
                         }
                         branch(branchName)
                     }
