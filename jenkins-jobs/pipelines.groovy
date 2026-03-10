@@ -24,16 +24,10 @@ def getRemoteBranches(String gitUrl, String credentialsId) {
     return branches
 }
 
-// Configurare
-def gitUrl = 'https://github.com/ioneldumitru04-rgb/CRM-frontend'
-def credentialsId = 'git-credentials'
-
-// Ia toate branch-urile remote
 def branches = getRemoteBranches(gitUrl, credentialsId)
 
 println "Found branches: ${branches}"
 
-//VERIFICATION JOBS
 branches.each { branchName ->
     def jobName = "VERIFICATION_${branchName.replaceAll('/', '-')}_FRONTEND"
     
@@ -50,7 +44,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(REPO)
+                            url("https://github.com/ioneldumitru04-rgb/CRM-frontend")
                         }
                         branch(branchName)
                     }
@@ -76,7 +70,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(REPO)
+                            url("https://github.com/ioneldumitru04-rgb/CRM-backend")
                         }
                         branch(branchName)
                     }
@@ -118,7 +112,7 @@ branches.each { branchName ->
                 scm {
                     git {
                         remote {
-                            url(REPO)
+                            url("https://github.com/ioneldumitru04-rgb/Snapshots")
                         }
                         branch(branchName)
                     }
