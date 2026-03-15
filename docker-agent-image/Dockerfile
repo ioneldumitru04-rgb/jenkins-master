@@ -18,7 +18,8 @@ RUN pip3 install --break-system-package --no-cache-dir \
     pytest \
     flask_security \
     flask_cors \
-    mysql-connector
+    mysql-connector \
+    bandit
 
 USER jenkins 
 
